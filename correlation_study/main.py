@@ -33,5 +33,5 @@ def main(config_path):
             plot_roc_curve(y, y_pred_proba, os.path.join(config["experiment"]["output_path"], "roc_curve.png"))
 
 if __name__ == "__main__":
-    main("configs/config.yaml")
+    main("configs/params.yaml")
 

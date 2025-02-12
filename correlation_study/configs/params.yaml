@@ -1,0 +1,20 @@
+experiment:
+  dataset_path: "Users/june/Documents/data/tabular_process_param/secom.csv"  # Update with the correct path to your dataset
+  plot_results: True  # Set to False if you don't want to generate plots
+
+preprocessing:
+  missing_value_strategy: "mean"  # Options: "mean", "median", "drop"
+  feature_selection: "pca"  # Options: "pca", "mutual_info", "variance_threshold"
+  normalization: "none"  # Options: "standard", "minmax", "robust", "none"
+
+random_forest:
+  n_estimators: 100  # Optimal number of trees found from the graph
+  max_depth: None  # Let the trees grow fully (or set a value)
+  min_samples_split: 2  # Minimum samples required to split a node
+  min_samples_leaf: 1  # Minimum samples required at a leaf node
+  random_state: 42  # Ensures reproducibility
+  n_jobs: -1  # Use all CPU cores for faster training
+
+smote:
+  apply_smote: True  # Set to False if you don't want to balance classes
+  random_state: 42  # Random seed for consistency
