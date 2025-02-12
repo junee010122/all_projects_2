@@ -29,15 +29,15 @@ plots:
   data_stats: True
   results: True
 
-params:
-  sql_database: "secom"
-  missing_value_strategy: "mean"
-  feature_selection: "pca"
-  normalization: "none"
-  model:
-    type: "voting_classifier"
-    hyperparameters:
-      logistic_regression: {}
-      random_forest:
-        n_estimators: 100
-      xgboost: {}
+#params:
+#  sql_database: "secom"
+#  missing_value_strategy: "mean"
+#  feature_selection: "pca"
+#  normalization: "none"
+#  model:
+#    type: "voting_classifier"
+#    hyperparameters:
+#      logistic_regression: {}
+#      random_forest:
+#        n_estimators: 100
+#      xgboost: {}
