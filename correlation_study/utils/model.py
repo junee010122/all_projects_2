@@ -11,7 +11,7 @@ from tqdm import tqdm
 
 from utils.plots import plot_statistical_results
 
-def load_config(config_path="configs/config.yaml"):
+def load_config(config_path="configs/params.yaml"):
     with open(config_path, "r") as file:
         return yaml.safe_load(file)
 
