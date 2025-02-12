@@ -1,0 +1,25 @@
+data:
+  dataset_path: "/Users/june/Documents/data/image_metal_defect"
+  train_path: "train"
+  valid_path: "valid"
+  test_path: "test"
+  image_size: 224
+  batch_size: 32
+  num_classes: 6
+  train_split: 0.8
+
+model:
+  type: "ResNet18"
+  pretrained: True  
+  dropout: 0.5
+
+training:
+  epochs: 30
+  learning_rate: 0.0001
+  optimizer: "Adam"
+  device: "cuda"  
+  loss_function: "CrossEntropyLoss"
+
+plots:
+  save_path: "./outputs"
+
