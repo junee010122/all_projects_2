@@ -10,18 +10,15 @@ from utils.model import train_model
 from utils.visualization import plot_results
 
 def run_experiemnts(params):    
-    # Load the configuration file
-    with open('params.yaml', 'r') as file:
-        config = yaml.load(file, Loader=yaml.FullLoader)
     
     # Load the data
-    data = pd.read_csv(config)
+    data_path= pd.read_csv(params['data_path'])
     
     # convert data to sql
     sql_data = convert_to_sql(data)
 
     # perform data preprocessing
-    # preprocess_data(data, config)
+    preprocess_data(data, config)
 
     # Load the model
     model = train_model(sql_data, config)
