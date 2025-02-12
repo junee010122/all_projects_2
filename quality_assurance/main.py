@@ -6,8 +6,7 @@ import pandas as pd
 
 from utils.general import load_config
 from utils.data import convert_to_sql
-from utils.model import train_model
-from utils.visualization import plot_results
+from utils.model import train_model, feature_selection
 
 def run_experiemnts(params):    
     
@@ -22,6 +21,7 @@ def run_experiemnts(params):
 
     # Load the model
     model = train_model(sql_data, config)
+    reduced_model = feature_selection(model, config)
 
     # visualize results
     # plot_results(??)
