@@ -1,7 +1,32 @@
+<<<<<<< HEAD
+experiment:
+  dataset_path: "path/to/secom.csv"  # Update with the correct path to your dataset
+  plot_results: True  # Set to False if you don't want to generate plots
+=======
 experiment:
   dataset_path: "Users/june/Documents/data/tabular_process_param/secom.csv"  # Update with the correct path to your dataset
   plot_results: True  # Set to False if you don't want to generate plots
+>>>>>>> e9a3eb298d53623fcd17cc6c8242158f17a47de1
 
+<<<<<<< HEAD
+preprocessing:
+  missing_value_strategy: "mean"  # Options: "mean", "median", "drop"
+  feature_selection: "pca"  # Options: "pca", "mutual_info", "variance_threshold"
+  normalization: "none"  # Options: "standard", "minmax", "robust", "none"
+
+random_forest:
+  n_estimators: 100  # Optimal number of trees found from the graph
+  max_depth: None  # Let the trees grow fully (or set a value)
+  min_samples_split: 2  # Minimum samples required to split a node
+  min_samples_leaf: 1  # Minimum samples required at a leaf ode
+  random_state: 42  # Ensures reproducibility
+  n_jobs: -1  # Use all CPU cores for faster training
+
+smote:
+  apply_smote: True  # Set to False if you don't want to balance classes
+  random_state: 42  # Random seed for consistency
+
+=======
 preprocessing:
   missing_value_strategy: "mean"  # Options: "mean", "median", "drop"
   feature_selection: "pca"  # Options: "pca", "mutual_info", "variance_threshold"
@@ -18,3 +43,5 @@ random_forest:
 smote:
   apply_smote: True  # Set to False if you don't want to balance classes
   random_state: 42  # Random seed for consistency
+
+>>>>>>> e9a3eb298d53623fcd17cc6c8242158f17a47de1

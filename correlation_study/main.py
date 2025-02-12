@@ -7,6 +7,7 @@ from utils.model import run_statistical_tests, train_model
 from utils.plots import plot_correlation_heatmap, plot_boxplots, plot_roc_curve
 
 def load_config(config_path):
+
     with open(config_path, "r") as file:
         return yaml.safe_load(file)
 
@@ -33,5 +34,11 @@ def main(config_path):
             plot_roc_curve(y, y_pred_proba, os.path.join(config["experiment"]["output_path"], "roc_curve.png"))
 
 if __name__ == "__main__":
+<<<<<<< HEAD
+    from IPython import embed
+    embed()
     main("configs/params.yaml")
+=======
+    main("configs/params.yaml")
+>>>>>>> e9a3eb298d53623fcd17cc6c8242158f17a47de1
 
