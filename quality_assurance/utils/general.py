@@ -1,5 +1,5 @@
-# general.py - Utility functions
+import yaml
+
 def load_config():
-    import yaml
     with open("params.yaml", "r") as f:
         return yaml.safe_load(f)

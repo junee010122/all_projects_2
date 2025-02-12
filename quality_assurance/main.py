@@ -4,11 +4,12 @@ import torch.nn as nn
 import yaml
 import pandas as pd
 
+from utils.general import load_config
 from utils.data import convert_to_sql
 from utils.model import train_model
 from utils.visualization import plot_results
 
-if __name__ == '__main__':
+def run_experiemnts(params):    
     # Load the configuration file
     with open('params.yaml', 'r') as file:
         config = yaml.load(file, Loader=yaml.FullLoader)
@@ -28,3 +29,7 @@ if __name__ == '__main__':
     # visualize results
     # plot_results(??)
     # streamlit and tableau bolognese
+
+if __name__ == '__main__':
+    params = load_config(sys.argv)
+    run_experiemnts(params)
