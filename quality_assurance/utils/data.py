@@ -2,7 +2,7 @@ import pandas as pd
 import mysql.connector
 from sqlalchemy import create_engine
 
-
+def 
 
 def create_SQL(data):
 
@@ -33,3 +33,25 @@ def create_SQL(data):
     print("successfully converted to SQL")
 
 
+def preprocess_data(data, params):
+    
+    create_SQL(data)
+    df = data
+    y = df.iloc[:, -1]  # Extract last column as target (Pass/Fail: 1 or -1)
+    X = df.iloc[:, :-1]  # Extract all columns except the last one as features
+    
+    numeric_cols = X.select_dtypes(include=["number"]).columns
+    non_numeric_cols = X.select_dtypes(exclude=["number"]).columns
+     
+    if len(non_numeric_cols) > 0:
+        X.drop(columns=non_numeric_cols, inplace=True)
+    
+    best_strategy = None
+    best_accuracy = 0
+
+    with tqdm(total=5, desc='Preprocessing Data') as pbar:
+        
+        handle_missing_values()
+        handle_feature_selection()
+        handle_normalization()
+    
