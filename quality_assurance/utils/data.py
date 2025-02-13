@@ -31,20 +31,5 @@ def create_SQL(data):
 
     data.to_sql(TABLE_NAME, con=engine, if_exists="replace", index=False)
     print("successfully converted to SQL")
-    return data
 
 
-def preprocess_data(data, params):
-    
-    data = create_SQL(data)
-    from IPython import embed
-    embed()
-
-    #query = """
-    #SELECT * FROM secom_table;
-    #"""
-    #df = pd.read_sql(query, sql_engine)
-    #df.fillna(df.mean(), inplace=True)  # Example: Handling missing values
-    #return df
-
-    
