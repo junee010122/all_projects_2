@@ -11,9 +11,10 @@ paths:
   results:
 
 preprocessing:
-  missing_value_strategy: "mean" # Options: "mean", "median", "most_frequent", "constant", "drop"
-  feature_selection: "pca" # Options: "pca", {add more if you have other ideas}
-  data_imbalance_strategy: "smote" # Options: "smote", "adasyn", "random_oversampling", "random_undersampling"
+  missing_value: ['mean', 'median', 'drop']
+  feature_selection: ['pca', 'mutual_info', 'variance_threshold']
+  normalization: ['standard', 'minmax', 'tobust']
+  imbalance: ['smote', 'adasyn', 'random_oversampling', 'radom_undersampling']
 
 task:
   type: xgboost #Options: "logistic_regression", "random_forest", "xgboost", "voting_classifier", {add more if you have other ideas}
