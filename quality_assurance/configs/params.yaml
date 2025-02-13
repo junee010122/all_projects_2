@@ -7,7 +7,7 @@ system:
     accelerator: gpu
 
 paths:
-  data:
+  data: /Users/june/Documents/data/tabular_process_param/secom.csv
   results:
 
 preprocessing:

@@ -3,21 +3,19 @@ import torch
 import torch.nn as nn
 import yaml
 import pandas as pd
+import sys
 
 from utils.general import load_config
-from utils.data import convert_to_sql
-from utils.model import train_model, feature_selection
+from utils.data import preprocess_data
+#from utils.model import train_model, feature_selection
 
 def run_experiemnts(params):    
     
     # Load the data
-    data_path= pd.read_csv(params['data_path'])
-    
-    # convert data to sql
-    sql_data = convert_to_sql(data)
+    data= pd.read_csv(params['paths']['data'])
 
     # perform data preprocessing
-    preprocess_data(data, config)
+    preprocess_data(data, params)
 
     # Load the model
     model = train_model(sql_data, config)
@@ -29,6 +27,6 @@ def run_experiemnts(params):
 
 if __name__ == '__main__':
     params = load_config(sys.argv)
-    from IPython import embed; embed()
+    #from IPython import embed; embed()
     run_experiemnts(params)
     
