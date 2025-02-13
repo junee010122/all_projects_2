@@ -79,4 +79,8 @@ def preprocess_data(data, params):
         handle_feature_selection(feature_selection_strategy, X, y)
         handle_normalization(normalization_strategy, X, y)
         handle_imbalance(imbalance_strategy, X, y)
-    
+   
+    processed_df = X.copy()
+    processed_df[y.name] = y.values()
+
+    return processed_df
