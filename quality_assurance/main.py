@@ -31,3 +31,4 @@ if __name__ == '__main__':
     params = load_config(sys.argv)
     from IPython import embed; embed()
     run_experiemnts(params)
+    
