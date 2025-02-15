@@ -10,6 +10,8 @@ from sklearn.decomposition import PCA
 from sklearn.feature_selection import mutual_info_classif, VarianceThreshold
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score
+from imblearn.over_sampling import SMOTE, ADASYN, RandomOverSampler
+from imblearn.under_sampling import RandomUnderSampler
 import yaml
 
 def evaluate_preprocessing(X, y, strategy_name):
@@ -95,8 +97,41 @@ def handle_normalization(strategies, X, y):
     
     return X, y
 
-def handle_imbalance():
-    pass
+def handle_imbalance(strategy, X, y, threshold=0.3):
+
+    class_counts = y.value_counts()
+    majority_class = class_counts.max()
+    minority_class = class_counts.min()
+    imbalance_ratio = minority_class / majority_class  # Ratio of minority to majority class
+    
+    print(f"Class Distribution:\n{class_counts}")
+    print(f"Imbalance Ratio: {imbalance_ratio:.4f}")
+
+    if imbalance_ratio >= threshold:
+        print("No significant imbalance detected. Skipping resampling.")
+        return X, y  # Return original data if no severe imbalance
+
+    print(f"Applying imbalance handling strategy: {strategy}")
+
+    if strategy == "smote":
+        sampler = SMOTE(random_state=42)
+    elif strategy == "adasyn":
+        sampler = ADASYN(random_state=42)
+    elif strategy == "random_oversampling":
+        sampler = RandomOverSampler(random_state=42)
+    elif strategy == "random_undersampling":
+        sampler = RandomUnderSampler(random_state=42)
+    else:
+        print("Invalid strategy or no resampling needed.")
+        return X, y  # Return original data if no valid strategy is selected
+
+    X_resampled, y_resampled = sampler.fit_resample(X, y)
+
+    return X_resampled, y_resampled
+    
+
+
+    # Your code here
 
 def create_SQL(data):
 
@@ -151,11 +186,17 @@ def preprocess_data(data, params):
     with tqdm(total=5, desc='Preprocessing Data') as pbar:
         
         X,y = handle_missing_values(impute_strategy, X, y, numeric_cols)
+        pbar.update(1) 
         X,y = handle_feature_selection(feature_selection_strategy, X, y)
+        pbar.update(1)
         X,y = handle_normalization(normalization_strategy, X, y)
-        X,y = handle_imbalance(imbalance_strategy, X, y)
-   
+        pbar.update(1)
+        if params['preprocessing']['imbalance']['enable']:
+            imbalance_strategy = params['preprocessing']['imbalance']['strategy']
+            X,y = handle_imbalance(imbalance_strategy, X, y)
+        pbar.update(1)
+
     processed_df = X.copy()
-    processed_df[y.name] = y.values()
+    processed_df[y.name] = y.values
 
     return processed_df

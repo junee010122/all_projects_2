@@ -16,8 +16,8 @@ def run_experiemnts(params):
     data= pd.read_csv(params['paths']['data'])
 
     # perform data preprocessing
-    preprocess_data(data, params)
-
+    exp_data = preprocess_data(data, params)
+    from Iython import embed; embed()
     # Load the model
     model = train_model(sql_data, config)
     reduced_model = feature_selection(model, config)

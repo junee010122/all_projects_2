@@ -14,7 +14,9 @@ preprocessing:
   missing_value: ['mean', 'median', 'drop']
   feature_selection: ['pca', 'mutual_info', 'variance_threshold']
   normalization: ['standard', 'minmax', 'tobust']
-  imbalance: ['smote', 'adasyn', 'random_oversampling', 'radom_undersampling']
+  imbalance:
+    enable: False
+    imbalance_strategy: smote # Choose from ['smote', 'adasyn', 'random_oversampling', 'radom_undersampling']
 
 task:
   type: xgboost #Options: "logistic_regression", "random_forest", "xgboost", "voting_classifier", {add more if you have other ideas}
