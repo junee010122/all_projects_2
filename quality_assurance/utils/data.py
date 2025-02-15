@@ -198,4 +198,4 @@ def preprocess_data(data, params):
     processed_df = X.copy()
     processed_df[y.name] = y.values
 
-    return processed_df
+    return X, y

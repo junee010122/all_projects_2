@@ -19,14 +19,23 @@ preprocessing:
     imbalance_strategy: smote # Choose from ['smote', 'adasyn', 'random_oversampling', 'radom_undersampling']
 
 task:
-  type: xgboost #Options: "logistic_regression", "random_forest", "xgboost", "voting_classifier", ....
+  models: ["logistic_regression", "random_forest", "xgboost"]  # List of models to compare
   hyperparameters:
     logistic_regression:
-      C: 1.0
+      C: 1.0  # Regularization strength
     random_forest:
-      n_estimators: 100
+      n_estimators: 100  # Number of trees
+      max_depth: 10  # Maximum tree depth
     xgboost:
-      n_estimators: 100  
+      n_estimators: 100  # Number of boosting rounds
+      learning_rate: 0.1  # Step size shrinkage
+      max_depth: 6  # Maximum tree depth
+
+training:
+  cross_validation_folds: 5  # Number of folds for cross-validation
+  scoring_metric: "accuracy"  # Options: "accuracy", "f1", "roc_auc", etc.
+  test_size: 0.2  # Proportion of data for testing
+  random_state: 42  # Ensure reproducibility
 
 plots:
   data_stats: True
