@@ -19,7 +19,7 @@ preprocessing:
     imbalance_strategy: smote # Choose from ['smote', 'adasyn', 'random_oversampling', 'radom_undersampling']
 
 task:
-  type: xgboost #Options: "logistic_regression", "random_forest", "xgboost", "voting_classifier", {add more if you have other ideas}
+  type: xgboost #Options: "logistic_regression", "random_forest", "xgboost", "voting_classifier", ....
   hyperparameters:
     logistic_regression:
       C: 1.0
@@ -31,16 +31,3 @@ task:
 plots:
   data_stats: True
   results: True
-
-#params:
-#  sql_database: "secom"
-#  missing_value_strategy: "mean"
-#  feature_selection: "pca"
-#  normalization: "none"
-#  model:
-#    type: "voting_classifier"
-#    hyperparameters:
-#      logistic_regression: {}
-#      random_forest:
-#        n_estimators: 100
-#      xgboost: {}

@@ -137,8 +137,7 @@ def create_SQL(data):
 
     # This code is just an example to get and idea of
     # converting CSV files into sql database
-    # The created database itself won't be necessarily
-    # used for training a model, or running ML techniques
+    # The created database won't be used in the project
 
     USER = "root"  
     PASSWORD = "junyoung4u"  

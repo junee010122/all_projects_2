@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
-
 # Load a dummy model (for now, using a random function)
 def load_model():
     return lambda x: np.random.rand(len(x))
