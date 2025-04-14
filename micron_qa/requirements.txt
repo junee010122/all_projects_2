@@ -1,0 +1,25 @@
+# Core ML
+scikit-learn
+xgboost
+joblib
+torch
+torchvision
+
+# Data processing
+pandas
+numpy
+pillow
+pyyaml
+
+# Web backend
+fastapi
+uvicorn
+
+# Frontend
+streamlit
+requests
+
+# Optional, but useful
+matplotlib
+seaborn
+

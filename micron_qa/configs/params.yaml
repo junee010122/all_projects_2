@@ -1,0 +1,47 @@
+system:
+  datatype: 0  # 0 = tabular, 1 = image
+
+paths:
+  data:
+    source: /Users/june/Documents/data
+    image: /Users/june/Documents/data/image_metal_defect
+    tabular: /Users/june/Documents/data/tabular_process_param/secom.csv
+  results: /Users/june/Documents/results/micron_qa
+
+preprocess: 1  # 0 for no preprocessing, 1 for preprocessing
+
+task:
+  image:
+    train_path: "train"
+    test_path: "test"
+    valid_path: "valid"
+    batch_size: 32
+    num_classes: 6
+    train_split: 0.8
+    image_size: 224
+
+  tabular:
+    model_type: 0
+
+training:
+  feature_selection: 0  # 0 for no feature selection, 1 for feature selection
+model:
+  image:
+    model_type: 0  # Placeholder for future use (e.g., 0 = ResNet18, 1 = EfficientNet)
+  tabular:
+    model_type: 0  # 0 = xgboost, 1 = logistic_regression, 2 = mlp
+
+  optuna:
+    xgboost:
+       n_estimators: [50, 500]
+       max_depth: [2, 10]
+       learning_rate: [0.01, 0.3]
+       subsample: [0.5, 1.0]
+       colsample_bytree: [0.5, 1.0]
+    logistic_regression:
+       C: [0.01, 10.0]
+
+plots:
+  data: 0
+  results: 0
+

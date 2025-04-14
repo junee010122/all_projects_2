@@ -14,11 +14,13 @@ from imblearn.over_sampling import SMOTE, ADASYN, RandomOverSampler
 from imblearn.under_sampling import RandomUnderSampler
 import yaml
 
+
 def evaluate_preprocessing(X, y, strategy_name):
     X = X.select_dtypes(include=["number"])  # Ensure only numeric columns are used
     model = RandomForestClassifier(n_estimators=50, random_state=42, n_jobs=-1)
     model.fit(X, y)
     return model.score(X, y)
+
 
 def handle_missing_values(strategies, X, y, numeric_cols):
 
@@ -42,6 +44,7 @@ def handle_missing_values(strategies, X, y, numeric_cols):
     print(f"Best Missing Value Strategy: {best_strategy} (Accuracy: {best_accuracy:.4f})")
     
     return X, y
+
 
 def handle_feature_selection(strategies, X, y):
 
@@ -68,6 +71,7 @@ def handle_feature_selection(strategies, X, y):
 
     print(f"Best Feature Selection Method: {best_feature_method} (Accuracy: {best_accuracy:.4f})")
     return X, y
+
 
 def handle_normalization(strategies, X, y):
 

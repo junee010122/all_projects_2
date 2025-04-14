@@ -83,6 +83,8 @@ def train_model(x, y, params):
     for model_name in model_types:
         model = models[model_name]
 
+        from IPython import embed; embed()
+        print("")
         scores = cross_val_score(model, x, y, cv=5, scoring="accuracy")
 
         mean_score = np.mean(scores)
@@ -95,4 +97,5 @@ def train_model(x, y, params):
     print(f"Best Model: {best_model_name} (Accuracy: {best_score:.4f})")
     best_model.fit(x, y)
 
-    return best_model, best_model_name
+    return best_model, best_score
+
