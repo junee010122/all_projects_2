@@ -1,0 +1,19 @@
+
+
+paths:
+  data: /Users/june/Documents/data/tabular_process_param/secom.csv
+  result: /Users/june/Documents/results/classification
+
+model: 0 # 0 for logistic regression, 1 for xgboos/
+
+optimization:
+    xgboost:
+       n_estimators: [50, 500]
+       max_depth: [2, 10]
+       learning_rate: [0.01, 0.3]
+       subsample: [0.5, 1.0]
+       colsample_bytree: [0.5, 1.0]
+    logistic_regression:
+       C: [0.01, 10.0]
+
+
